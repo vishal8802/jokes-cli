@@ -15,7 +15,12 @@ const init = async () => {
 
     if (process.argv.includes('leaderboard')) {
         const popularJoke = getPopularJoke();
-        console.log('Here is a popular joke for you');
+        if(!popularJoke){
+            console.log('No jokes in leaderboard');
+            process.exit();
+
+        }
+        console.log('Here is a popular joke for you')
         console.log(popularJoke);
         process.exit();
     }
