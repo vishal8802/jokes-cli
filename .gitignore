@@ -1,0 +1,4 @@
+.vscode
+node_modules
+jokes.backup
+package-lock.json
