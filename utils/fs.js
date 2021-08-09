@@ -12,7 +12,7 @@ const getPopularJoke = () => {
     const jokes = fs.readFileSync('jokes.txt', 'utf8');
     const jokesArray = jokes.split('\n\n');
     const jokesMap = {};
-    let maxOccured = jokesArray[0] || 'No Jokes in the leaderboard';
+    let maxOccured = jokesArray[0] || '';
     jokesArray.forEach((joke) => {
         if (joke) {
             if (!jokesMap[joke]) jokesMap[joke] = 1;
@@ -27,4 +27,8 @@ const getPopularJoke = () => {
     return maxOccured;
 };
 
-module.exports = { addJoke, getPopularJoke };
+const clearJokes = ()=>{
+    fs.truncateSync('jokes.txt')
+}
+
+module.exports = { addJoke, getPopularJoke, clearJokes };
