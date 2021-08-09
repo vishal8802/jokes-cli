@@ -27,4 +27,8 @@ const getPopularJoke = () => {
     return maxOccured;
 };
 
-module.exports = { addJoke, getPopularJoke };
+const clearJokes = ()=>{
+    fs.truncateSync('jokes.txt')
+}
+
+module.exports = { addJoke, getPopularJoke, clearJokes };

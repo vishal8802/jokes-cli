@@ -1,18 +1,27 @@
 // console.log(process.argv);
 const { prompt } = require('./utils/prompt');
 const request = require('./utils/request');
-const { addJoke, getPopularJoke } = require('./utils/fs');
+const { addJoke, getPopularJoke, clearJokes } = require('./utils/fs');
 
 const BASE_URL = `https://icanhazdadjoke.com`;
 let term = ``;
 
 const init = async () => {
+    if (process.argv.includes('leaderboard') && process.argv.includes('--clear')) {
+        clearJokes();
+        console.log('Leaderboard cleared')
+        process.exit();
+    }
+
     if (process.argv.includes('leaderboard')) {
         const popularJoke = getPopularJoke();
         console.log('Here is a popular joke for you');
         console.log(popularJoke);
         process.exit();
     }
+
+   
+
     const input = await prompt.get(['term']);
     term = input.term;
 
