@@ -8,6 +8,7 @@ const addJoke = (joke) => {
     }
 };
 
+
 const getPopularJoke = () => {
     if(!fs.existsSync('jokes.txt')) return '';
     const jokes = fs.readFileSync('jokes.txt', 'utf8');
